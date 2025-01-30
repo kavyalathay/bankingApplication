@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
-public class BankingException extends Exception {
+public class BankingClientException extends Exception {
 	
 	/**
 	 * 

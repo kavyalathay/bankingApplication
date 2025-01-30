@@ -5,24 +5,22 @@ import java.time.LocalDateTime;
 
 import org.springframework.lang.NonNull;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @ToString
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class AccountTransaction {
-	private Long transactionId;
+public class AccountTransferFunds {
+	private Long transferId;
+	@DecimalMin(value = "1.0", message = "Value must be at least 1 dollar")
 	private BigDecimal transactionAmount;
 	private LocalDateTime transactionTimestamp;
 	@NotBlank
 	private String transactionName;
 	@NonNull
-	private Long accountId;
+	private Long fromAccountId;
+	@NonNull
+	private Long toAccountId;
 }

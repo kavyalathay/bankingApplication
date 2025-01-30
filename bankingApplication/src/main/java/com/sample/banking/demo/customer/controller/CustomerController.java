@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.sample.banking.demo.customer.exception.BankingException;
+import com.sample.banking.demo.customer.exception.BankingClientException;
 import com.sample.banking.demo.customer.model.dto.Customer;
 import com.sample.banking.demo.customer.services.CustomerService;
 
@@ -36,7 +36,7 @@ public class CustomerController {
 		return ResponseEntity.notFound().build();
 	}
 
-	@GetMapping("/id/{emailId}")
+	@GetMapping("/emailid/{emailId}")
 	private ResponseEntity<Customer> getByEmailId(@PathVariable String emailId) {
 		Optional<Customer> customer = customerService.getCustomerDetailsByEmailId(emailId);
 		if (customer.isPresent()) {
@@ -47,7 +47,7 @@ public class CustomerController {
 
 	@PostMapping("/register")
 	private ResponseEntity<Customer> createCustomer(@RequestBody @Valid Customer customer,
-			UriComponentsBuilder uriBuilder) throws BankingException {
+			UriComponentsBuilder uriBuilder) throws BankingClientException {
 		Customer customerResponse = customerService.createCustomer(customer);
 		return ResponseEntity
 				.created(uriBuilder.path("/id/{customerId}").buildAndExpand(customer.getCustomerId()).toUri())

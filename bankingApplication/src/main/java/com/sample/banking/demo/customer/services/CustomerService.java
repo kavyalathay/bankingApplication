@@ -1,5 +1,6 @@
 package com.sample.banking.demo.customer.services;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
-import com.sample.banking.demo.customer.exception.BankingException;
+import com.sample.banking.demo.customer.exception.BankingClientException;
 import com.sample.banking.demo.customer.model.dto.Customer;
 import com.sample.banking.demo.customer.model.entity.CustomerEntity;
 import com.sample.banking.demo.customer.model.mapper.CustomerMapper;
@@ -44,16 +45,16 @@ public class CustomerService {
 		return Optional.empty();
 	}
 
-	public Customer createCustomer(Customer customer) throws BankingException {
+	public Customer createCustomer(Customer customer) throws BankingClientException {
 		List<String> validationErrors = validate(customer);
 		if (!CollectionUtils.isEmpty(validationErrors)) {
-			throw BankingException.builder().errorMessage(validationErrors.toString()).build();
+			throw BankingClientException.builder().errorMessage(validationErrors.toString()).build();
 		}
 		return customerMapper.toDto(customerRepository.save(customerMapper.toEntity(customer)));
 	}
 
 	private List<String> validate(Customer customer) {
-		List<String> errorMessages = Collections.emptyList();
+		List<String> errorMessages = new ArrayList<>();
 		if (customerRepository.findByEmail(customer.getEmail()).isPresent()) {
 			errorMessages.add("Email already used by another user");
 		}
