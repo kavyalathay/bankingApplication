@@ -160,10 +160,11 @@ public class AccountTransactionService {
 		if (fromAccount.isEmpty()) {
 			errorMessages.add("From Account Id is not valid" + accountTransferFunds.getFromAccountId());
 		}
-		BigDecimal accountBalance = accountTransactionRepository.findById(fromAccount.get().getAccountId()).stream()
-				.map(tran -> tran.getTransactionAmount()).reduce(BigDecimal.ZERO, BigDecimal::add);
+		BigDecimal accountBalance = accountTransactionRepository.findByAccountId(fromAccount.get().getAccountId())
+				.stream().map(tran -> tran.getTransactionAmount()).reduce(BigDecimal.ZERO, BigDecimal::add);
 		if (accountBalance.compareTo(accountTransferFunds.getTransactionAmount()) < 1) {
-			errorMessages.add("Not sufficient balance to Transger" + accountTransferFunds.getToAccountId());
+			errorMessages.add(
+					"Not sufficient balance to Transfer, available amount : " + accountTransferFunds.getToAccountId());
 		}
 		if (accountRepository.findById(accountTransferFunds.getToAccountId()).isEmpty()) {
 			errorMessages.add("To Account Id is not valid" + accountTransferFunds.getToAccountId());
