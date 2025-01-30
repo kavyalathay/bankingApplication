@@ -43,7 +43,12 @@ public class AccountService {
 		if (accountId != null) {
 			Optional<AccountEntity> accountEntity = accountRepository.findById(accountId);
 			if (accountEntity.isPresent()) {
-				return Optional.of(accountMapper.toDto(accountEntity.get()));
+				BigDecimal accountBalance = accountTransactionRepository
+						.findByAccountId(accountEntity.get().getAccountId()).stream()
+						.map(tran -> tran.getTransactionAmount()).reduce(BigDecimal.ZERO, BigDecimal::add);
+				Account accountDetails = accountMapper.toDto(accountEntity.get());
+				accountDetails.setAccountBalance(accountBalance);
+				return Optional.of(accountDetails);
 			}
 		}
 		return Optional.empty();

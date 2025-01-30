@@ -2,7 +2,7 @@ package com.sample.banking.demo.customer.model.entity;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.lang.NonNull;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +31,10 @@ public class CustomerEntity {
 	private String email;
 	private String firstName;
 	private String lastName;
-	@JsonFormat(pattern = "MM/dd/yyyy")
+//	@JsonSerialize(using = LocalDateSerializer.class)
+//	@JsonDeserialize(using = LocalDateDeserializer.class)
+//	@JsonFormat(pattern = "MM/dd/yyyy")
+	@NonNull
 	private LocalDate dob;
 	private String ssn;
 //	@OneToMany

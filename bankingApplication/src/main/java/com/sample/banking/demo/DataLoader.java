@@ -48,8 +48,8 @@ public class DataLoader {
 	@Bean
 	CommandLineRunner loadCustomerData(ObjectMapper mapper) {
 		JavaTimeModule javaTimeModule = new JavaTimeModule();
-		mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-		mapper.setDateFormat(new SimpleDateFormat("MM/dd/yyyy"));
+		mapper.disable(SerializationFeature.INDENT_OUTPUT);
+		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
 		javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ISO_DATE));
 		mapper.registerModule(javaTimeModule);
 		return args -> {
