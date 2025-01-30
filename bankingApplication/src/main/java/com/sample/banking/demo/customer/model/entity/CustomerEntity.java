@@ -2,6 +2,8 @@ package com.sample.banking.demo.customer.model.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,7 @@ public class CustomerEntity {
 	private String email;
 	private String firstName;
 	private String lastName;
+	@JsonFormat(pattern = "MM/dd/yyyy HH:mm:ss")
 	private LocalDate dob;
 	private String ssn;
 //	@OneToMany
