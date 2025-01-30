@@ -27,7 +27,7 @@ import com.sample.banking.demo.customer.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Configuration
+//@Configuration
 public class DataLoader {
 	private final CustomerRepository customerRepository;
 	private final AccountRepository accountRepository;
@@ -56,7 +56,6 @@ public class DataLoader {
 			try (InputStream is = resource.getInputStream()) {
 				List<CustomerEntity> customers = mapper.readValue(is, new TypeReference<List<CustomerEntity>>() {
 				});
-
 				customerRepository.saveAll(customers);
 			}
 		};

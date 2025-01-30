@@ -56,10 +56,10 @@ public class AccountTransactionService {
 	public Optional<AccountDetails> getByAccountId(long accountId) {
 		Optional<AccountEntity> accountEntity = accountRepository.findById(accountId);
 		if (accountEntity.isPresent()) {
-			AccountDetails.builder().account(accountMapper.toDto(accountEntity.get()))
+			return Optional.of(AccountDetails.builder().account(accountMapper.toDto(accountEntity.get()))
 					.transactions(
 							accountTransactionMapper.toDto(accountTransactionRepository.findByAccountId(accountId)))
-					.build();
+					.build());
 		}
 		return Optional.empty();
 	}
@@ -85,7 +85,7 @@ public class AccountTransactionService {
 				// transactions
 				List<AccountTransaction> accountTransactions = accountTransactionMapper
 						.toDto(accountTransactionRepository.findByAccountId(accountEntity.getAccountId()));
-				if (CollectionUtils.isEmpty(accountTransactions)) {
+				if (!CollectionUtils.isEmpty(accountTransactions)) {
 					accountDetails.getTransactions().addAll(accountTransactionMapper.toDto(
 							accountTransactionRepository.findByAccountId(accountDetails.getAccount().getAccountId())));
 				}

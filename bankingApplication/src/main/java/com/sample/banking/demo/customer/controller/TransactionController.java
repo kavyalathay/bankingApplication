@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class TransactionController {
 	private final AccountTransactionService accountTransactionService;
 
-	@GetMapping("/{accountId}")
+	@GetMapping("/account/{accountId}")
 	private ResponseEntity<AccountDetails> getAccountTransactions(@PathVariable long accountId) {
 		Optional<AccountDetails> accountDetails = accountTransactionService.getByAccountId(accountId);
 		if (accountDetails.isPresent()) {
@@ -36,7 +36,7 @@ public class TransactionController {
 		}
 	}
 
-	@GetMapping("/{customerId}")
+	@GetMapping("/customer/{customerId}")
 	private ResponseEntity<CustomerDetails> getCustomerTransactions(@PathVariable long customerId) {
 		Optional<CustomerDetails> customerDetails = accountTransactionService.getByCustomerId(customerId);
 		if (customerDetails.isPresent()) {
