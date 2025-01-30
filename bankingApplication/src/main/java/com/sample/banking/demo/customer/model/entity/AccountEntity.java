@@ -1,7 +1,5 @@
 package com.sample.banking.demo.customer.model.entity;
 
-import java.math.BigDecimal;
-
 import com.sample.banking.demo.customer.enums.AccountType;
 
 import jakarta.annotation.Nonnull;

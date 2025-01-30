@@ -7,226 +7,343 @@
 	},
 	"item": [
 		{
-			"name": "createCustomer",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"userName\": \"Praveen\",\r\n    \"email\": \"kavyalatha.yerram@gmail.com\",\r\n    \"firstName\": \"Kavyalatha\",\r\n    \"lastName\": \"Yerram\",\r\n    \"dob\": \"04/09/1986\",\r\n    \"ssn\": \"125485452\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Account",
+			"item": [
+				{
+					"name": "createAccount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountType\": \"SAVINGS\",\r\n    \"balance\": 12.0,\r\n    \"customerId\": 1,\r\n    \"accountInitialTransaction\": {\r\n        \"transactionAmount\": 12.0,\r\n        \"transactionName\": \"Deposit from XXX\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/accounts/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"accounts",
+								"create"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/customer/register",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"customer",
-						"register"
-					]
+				{
+					"name": "getAccount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountType\": \"SAVINGS\",\r\n    \"balance\": 11.0,\r\n    \"customerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/accounts/customer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"accounts",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAccount-customerId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountType\": \"SAVINGS\",\r\n    \"balance\": 11.0,\r\n    \"customerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/accounts/customer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"accounts",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "getCustomer",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"userName\": \"Kavya\",\r\n    \"email\": \"kavyalatha.yerram@gmail.com\",\r\n    \"firstName\": \"Kavyalatha\",\r\n    \"lastName\": \"Yerram\",\r\n    \"dob\": \"04/09/1986\",\r\n    \"ssn\": \"125485452\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Customer",
+			"item": [
+				{
+					"name": "createCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"Praveen\",\r\n    \"email\": \"kavyalatha.yerram@gmail.com\",\r\n    \"firstName\": \"Kavyalatha\",\r\n    \"lastName\": \"Yerram\",\r\n    \"dob\": \"04/09/1986\",\r\n    \"ssn\": \"125485452\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"register"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/customer/id/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"customer",
-						"id",
-						"1"
-					]
+				{
+					"name": "getCustomer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"Kavya\",\r\n    \"email\": \"kavyalatha.yerram@gmail.com\",\r\n    \"firstName\": \"Kavyalatha\",\r\n    \"lastName\": \"Yerram\",\r\n    \"dob\": \"04/09/1986\",\r\n    \"ssn\": \"125485452\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer/id/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomerByEmail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"Kavya\",\r\n    \"email\": \"kavyalatha.yerram@gmail.com\",\r\n    \"firstName\": \"Kavyalatha\",\r\n    \"lastName\": \"Yerram\",\r\n    \"dob\": \"04/09/1986\",\r\n    \"ssn\": \"125485452\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer/emailid/praveen.j@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"emailid",
+								"praveen.j@gmail.com"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "getCustomerByEmail",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"userName\": \"Kavya\",\r\n    \"email\": \"kavyalatha.yerram@gmail.com\",\r\n    \"firstName\": \"Kavyalatha\",\r\n    \"lastName\": \"Yerram\",\r\n    \"dob\": \"04/09/1986\",\r\n    \"ssn\": \"125485452\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "createAccountTransaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountId\": 1,\r\n    \"transactionAmount\": 11.0,\r\n    \"transactionName\": \"Deposit from XXX\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"post"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/customer/emailid/praveen.j@gmail.com",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"customer",
-						"emailid",
-						"praveen.j@gmail.com"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "createAccount",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"accountType\": \"SAVINGS\",\r\n    \"balance\": 12.0,\r\n    \"customerId\": 1,\r\n    \"accountInitialTransaction\": {\r\n        \"transactionAmount\": 12.0,\r\n        \"transactionName\": \"Deposit from XXX\"\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "getTransactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountId\": 1,\r\n    \"transactionAmount\": 11.0,\r\n    \"transactionName\": \"Deposit from XXX\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/customer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"customer",
+								"1"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/accounts/create",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"accounts",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getAccount",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"accountType\": \"SAVINGS\",\r\n    \"balance\": 11.0,\r\n    \"customerId\": 1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "getTransactions Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountId\": 1,\r\n    \"transactionAmount\": 11.0,\r\n    \"transactionName\": \"Deposit from XXX\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/account/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"account",
+								"1"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/accounts/customer/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"accounts",
-						"customer",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "createAccountTransaction",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"accountId\": 1,\r\n    \"transactionAmount\": 11.0,\r\n    \"transactionName\": \"Deposit from XXX\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "fundsTransfer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fromAccountId\": 1,\r\n    \"toAccountId\": 2,\r\n    \"transactionAmount\": 11.0,\r\n    \"transactionName\": \"Gift\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"transfer"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/transactions/post",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"transactions",
-						"post"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "fundsTransfer",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"fromAccountId\": 1,\r\n    \"toAccountId\": 2,\r\n    \"transactionAmount\": 11.0,\r\n    \"transactionName\": \"Gift\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/transactions/transfer",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"transactions",
-						"transfer"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	]
 }
