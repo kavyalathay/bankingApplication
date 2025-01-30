@@ -31,7 +31,7 @@ public class CustomerEntity {
 	private String email;
 	private String firstName;
 	private String lastName;
-	@JsonFormat(pattern = "MM/dd/yyyy HH:mm:ss")
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate dob;
 	private String ssn;
 //	@OneToMany
